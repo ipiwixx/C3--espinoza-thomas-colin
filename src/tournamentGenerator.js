@@ -62,6 +62,16 @@ class TournamentGenerator {
         }
     }
   }
+
+  calculateTotalFinalStageScore() {
+    let totalScore = 0;
+    for (const teamName in this.finalStageScores) {
+        if (this.finalStageScores.hasOwnProperty(teamName)) {
+            totalScore += this.finalStageScores[teamName];
+        }
+    }
+    return totalScore;
+  }
 }
 
 export default TournamentGenerator;

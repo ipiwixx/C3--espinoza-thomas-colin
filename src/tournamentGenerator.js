@@ -58,7 +58,7 @@ class TournamentGenerator {
     // Met à jour les scores de la phase finale
     for (const teamName in finalStageResults) {
         if (finalStageResults.hasOwnProperty(teamName)) {
-        this.finalStageScores[teamName] = finalStageResults[teamName];
+            this.finalStageScores[teamName] = finalStageResults[teamName];
         }
     }
   }

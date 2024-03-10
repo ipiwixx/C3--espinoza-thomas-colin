@@ -119,4 +119,34 @@ import TournamentGenerator from "../src/tournamentGenerator.js";
       // Vérifie si l'appel à calculateFinalStageScores lève une erreur
       expect(() => tournament.calculateFinalStageScores(finalStageResults)).to.throw(Error);
     });
+
+    it('8. Gère correctement le cas où une équipe est absente dans les résultats de la phase finale', () => {
+      const teams = [
+        { name: 'Équipe 1', players: ['Joueur 1', 'Joueur 2', 'Joueur 3'] },
+        { name: 'Équipe 2', players: ['Joueur 4', 'Joueur 5', 'Joueur 6'] },
+        { name: 'Équipe 3', players: ['Joueur 7', 'Joueur 8', 'Joueur 9'] },
+        { name: 'Équipe 4', players: ['Joueur 10', 'Joueur 11', 'Joueur 12'] }
+      ];
+      const tournament = new TournamentGenerator(teams);
+      tournament.generatePoules();
+      tournament.simulatePoulesMatches();
+      tournament.generateFinalStages();
+
+      // On suppose que nous avons des résultats de matchs pour chaque équipe dans la phase finale
+      const finalStageResults = {
+        'Équipe 1': 3,
+        'Équipe 2': 1,
+        // L'équipe 3 est absente dans les résultats
+        'Équipe 4': 0
+      };
+
+      tournament.calculateFinalStageScores(finalStageResults);
+
+      // Vérifie si chaque équipe a le score calculé correctement
+      expect(tournament.finalStageScores['Équipe 1']).to.equal(3);
+      expect(tournament.finalStageScores['Équipe 2']).to.equal(1);
+      // Vérifie si l'équipe absente a un score de 0
+      expect(tournament.finalStageScores['Équipe 3']).to.equal(0);
+      expect(tournament.finalStageScores['Équipe 4']).to.equal(0);
+    });
   });

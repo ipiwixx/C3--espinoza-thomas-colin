@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rmess/test-correction.git"
+    "url": "git+https://github.com/ipiwixx/C3--espinoza-thomas-colin.git"
   },
   "keywords": [],
   "author": "rmess",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rmess/test-correction.git/issues"
+    "url": "https://github.com/ipiwixx/C3--espinoza-thomas-colin.git/issues"
   },
-  "homepage": "https://github.com/rmess/test-correction.git#readme",
+  "homepage": "https://github.com/ipiwixx/C3--espinoza-thomas-colin.git#readme",
   "dependencies": {
     "chai": "^5.1.0",
     "csv-parser": "^3.0.0",

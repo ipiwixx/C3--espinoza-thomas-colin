@@ -49,11 +49,17 @@ class TournamentGenerator {
   }
 
   calculateFinalStageScores(finalStageResults) {
-    // finalStageResults est un objet où les clés sont les noms des équipes et les valeurs sont les scores
+    // Vérifie si des équipes supplémentaires sont incluses dans les résultats
+    const extraTeams = Object.keys(finalStageResults).filter(teamName => !this.teams.find(team => team.name === teamName));
+    if (extraTeams.length > 0) {
+        throw new Error('Des équipes supplémentaires ont été incluses dans les résultats de la phase finale.');
+    }
+
+    // Met à jour les scores de la phase finale
     for (const teamName in finalStageResults) {
-      if (finalStageResults.hasOwnProperty(teamName)) {
+        if (finalStageResults.hasOwnProperty(teamName)) {
         this.finalStageScores[teamName] = finalStageResults[teamName];
-      }
+        }
     }
   }
 }

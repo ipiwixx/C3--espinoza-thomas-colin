@@ -45,3 +45,13 @@ import TournamentGenerator from "../src/tournamentGenerator.js";
       expect(tournament.finalStages[tournament.finalStages.length - 1]).to.have.lengthOf(1); // Vérifie si la dernière phase finale a été joué
     });
   });
+
+  describe('Testing TeamGenerator functions', () => {
+    it('4. Génère correctement les équipes', () => {
+      const players = ['Joueur 1', 'Joueur 2', 'Joueur 3', 'Joueur 4', 'Joueur 5', 'Joueur 6'];
+      const teamGenerator = new TeamGenerator(players);
+      teamGenerator.generateTeams();
+      expect(teamGenerator.teams).to.have.lengthOf.at.least(1);
+      expect(teamGenerator.teams[0].players).to.have.lengthOf(3); // Vérifie si chaque équipe a 3 joueurs
+    });
+  });
